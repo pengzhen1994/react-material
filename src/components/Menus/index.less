@@ -1,0 +1,44 @@
+/*
+* @Author: pengzhen
+* @Date:   2016-07-01 01:27:20
+* @Last Modified by:   pengzhen
+* @Last Modified time: 2016-07-02 19:52:14
+*/
+
+/* main layout */
+@theme_color: #ee6e73;
+@menu_width: 100%;
+.menu-paper{
+    width: @menu_width;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    .menu-head{
+        text-align: center;
+        .logo{
+            margin: 30px auto;
+            display: block;
+        }
+        .search-paper{
+            display: inline-block;
+            margin: auto;
+            input{
+                transition: all 0.3s;
+                padding: 0 10px !important;
+                width: @menu_width*0.9 !important;
+                &:focus,&:active,&:hover{
+                    width: @menu_width !important;
+                }
+            }
+        }
+    }
+    .menu{
+        .open>.menu-btn-wrap .menu-btn{
+            background: rgba(0,0,0,0.05);
+        }
+        .active>.menu-btn-wrap .menu-btn {
+            color: #fff;
+            background: @theme_color;
+        }
+    }
+}

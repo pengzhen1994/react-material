@@ -1,0 +1,25 @@
+/*
+* @Author: pengzhen
+* @Date:   2016-07-01 01:28:05
+* @Last Modified by:   pengzhen
+* @Last Modified time: 2016-07-02 21:32:35
+*/
+
+@menu_width: 224px;
+.layout-transition(){
+    transition: all 0.3s;
+}
+.main-layout{
+    .layout-manus{
+        position: fixed;
+        width: @menu_width;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        .layout-transition();
+    }
+    .layout-container{
+        margin-left: @menu_width;
+        .layout-transition();
+    }
+}
