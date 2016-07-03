@@ -63,6 +63,7 @@
     "rc-tween-one": "^0.6.17",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-live-preview": "^0.0.8-alpha",
     "react-overlays": "^0.6.3",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.1",
