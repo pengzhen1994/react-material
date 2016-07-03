@@ -3,15 +3,15 @@
  * @Date:   2016-07-01 15:54:24
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-02 21:51:00
+ * @Last Modified time: 2016-07-03 20:04:51
  */
 
 'use strict';
 import './index.less';
 import React from 'react';
 import classnames from 'classnames'
-import wave from 'components/Components/Wave';
-import Collapse from 'components/Components/Collapse';
+import wave from '../Wave';
+import Collapse from '../Collapse';
 
 
 const activeStyles = {

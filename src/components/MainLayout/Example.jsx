@@ -3,16 +3,18 @@
  * @Date:   2016-07-01 17:51:18
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-02 22:01:55
+ * @Last Modified time: 2016-07-03 21:15:49
  */
 
 'use strict';
 import './example.less';
 import React from 'react';
-import wave from 'components/Components/Wave'
-import Collapse from 'components/Components/Collapse'
+import ReactDOM from 'react-dom';
+import Codemirror from 'react-material/Codemirror';
+import wave from 'react-material/Wave';
+import Collapse from 'react-material/Collapse';
+import DocumentUtils from 'utils/DocumentUtils';
 
-const colors = ['#ff6768']
 
 export default class Example extends React.Component {
     static propTypes = {
@@ -33,7 +35,40 @@ export default class Example extends React.Component {
     randomColor() {
         return "#" + ("00000" + ((Math.random() * 16777215 + 0.5) >> 0).toString(16)).slice(-6);
     }
+    scrollToRef(ref) {
+        let dom = this.refs[ref];
+        if (dom) {
+            if (dom._reactInternalInstance) {
+                dom = ReactDOM.findDOMNode(dom);
+            }
+            DocumentUtils.scrollTo(DocumentUtils.getOffset(dom).y)
+        }
+    }
+    renderLink(ref,title){
+
+        return <li key={ref} className='index'><a  onClick={this.scrollToRef.bind(this,ref)}>{title}</a></li>;
+    }
     render() {
+        let links = [];
+        let content = this.props.content;
+        if(content){
+            content = content.map((obj,i)=>{
+                const { title,code } = obj;
+                const Component = obj.default;
+                const ref = 'example_' + i;
+                links.push(this.renderLink(ref,title))
+                return (
+                    <ExampleCode
+                        key={i}
+                        ref={ref}
+                        title={title}
+                        code={code}
+                    >
+                        <Component/>
+                    </ExampleCode>
+                )
+            })
+        }
         return (
             <div className="components-example">
                 <TopNav 
@@ -44,10 +79,12 @@ export default class Example extends React.Component {
                 />
                 <div className="main container">
                     <div className="left-col">
-                        {this.props.children}
+                        {content}
                     </div>
                     <div className="right-col">
-
+                        <ul className='scroll-index'>
+                            {links}
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -75,7 +112,6 @@ export class TopNav extends React.Component {
     }
 }
 
-
 export class ExampleCode extends React.Component {
     static propTypes = {
         name: React.PropTypes.string,
@@ -84,7 +120,7 @@ export class ExampleCode extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: true
         }
     }
     render() {
@@ -101,11 +137,14 @@ export class ExampleCode extends React.Component {
                     }} >
                         {this.props.title} <span className='right-btn'><i className="fa fa-code"></i></span>
                     </div>
-                    <Collapse className='code-text' open={this.state.open}>
-                        <code>
-                            {this.props.code}
-                        </code>
-                    </Collapse>
+                    {
+                        this.props.code &&
+                        <Collapse className='code-text' unmountOnExit={true} open={this.state.open}>
+                            <div style={{maxHeight: 300,overflow: 'auto'}}>
+                                <Codemirror value={this.props.code} />
+                            </div>
+                        </Collapse>
+                    }
                     <div className="code-example">
                         {this.props.children}
                     </div>
@@ -114,3 +153,4 @@ export class ExampleCode extends React.Component {
         );
     }
 }
+

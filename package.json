@@ -35,6 +35,7 @@
     "file-loader": "^0.8.4",
     "font-awesome": "^4.6.3",
     "font-awesome-webpack": "^0.0.4",
+    "fs": "^0.0.2",
     "isomorphic-fetch": "^2.2.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
@@ -57,11 +58,13 @@
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
+    "codemirror": "^5.16.0",
     "core-js": "^2.4.0",
     "material-ui": "^0.15.1",
     "rc-animate": "^2.2.0",
     "rc-tween-one": "^0.6.17",
     "react": "^15.1.0",
+    "react-codemirror": "^0.2.6",
     "react-dom": "^15.1.0",
     "react-live-preview": "^0.0.8-alpha",
     "react-overlays": "^0.6.3",

@@ -1,18 +1,17 @@
-import React, {
-    PropTypes
-} from 'react';
+import React from 'react';
 import {
     Router,
     Route,
     IndexRoute
 } from 'react-router';
 import App from 'components/App';
+import Test from 'components/Test';
 // import NotFound from '../components/NotFound';
 import TodoList from 'components/Todos/TodoList';
 import Blog from 'components/Blog';
-import MenusExample from 'components/Components/Menus/example';
-import WaveExample from 'components/Components/Wave/example';
-import CollapseExample from 'components/Components/Collapse/example';
+
+import exampleRoutes from './example';
+
 export default class Routes extends React.Component {
 
     constructor(props) {
@@ -22,14 +21,11 @@ export default class Routes extends React.Component {
     render() {
         return (
             <Router history={this.props.history}>
+                <Route path='/test' component={Test} />
                 <Route path='/todo' component={TodoList} />
                 <Route path='/' component={App}>
                     <Route path='blog' component={Blog} />
-                    <Route path='components'>
-                        <Route path='menus' component={MenusExample} />
-                        <Route path='wave' component={WaveExample} />
-                        <Route path='collapse' component={CollapseExample} />
-                    </Route>
+                    {exampleRoutes}
                 </Route>
             </Router>
         );

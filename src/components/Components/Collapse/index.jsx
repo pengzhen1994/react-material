@@ -3,17 +3,15 @@
  * @Date:   2016-07-02 15:56:36
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-02 22:11:17
+ * @Last Modified time: 2016-07-03 20:07:43
  */
 
 'use strict';
 import './index.less';
 import React from 'react';
 import classNames from 'classnames';
-import linkFunctions from 'utils/linkFunctions';
-import {
-    css
-} from 'utils/dom';
+import linkFunctions from '../utils/linkFunctions';
+import { css } from '../utils/dom';
 import Transition from 'react-overlays/lib/Transition';
 
 

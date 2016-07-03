@@ -3,7 +3,7 @@
  * @Date:   2016-06-30 23:31:47
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-02 20:24:10
+ * @Last Modified time: 2016-07-03 21:14:05
  */
 
 'use strict';
@@ -13,10 +13,9 @@ import {
     connect
 } from 'react-redux';
 import history from 'store/history';
-import Paper from 'material-ui/Paper';
-import Menus from 'components/Components/Menus';
-import AutoComplete from 'material-ui/AutoComplete';
-
+import Menus from 'react-material/Menus';
+// import AutoComplete from 'material-ui/AutoComplete';
+import { menus } from '../../routes/example.jsx';
 
 function mapStateToProps(state) {
     return {
@@ -32,37 +31,26 @@ export class MenusBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            menus: [{
-                label: '主页',
-                value: '/'
-            }, {
-                label: '博客',
-                value: '/blog'
-            }, {
+            menus: [
+            // {
+            //     label: '主页',
+            //     value: '/'
+            // }, {
+            //     label: '博客',
+            //     value: '/blog'
+            // }, 
+            {
                 label: 'Components',
-                children: [{
-                    label: 'Menus',
-                    value: '/components/menus'
-                },{
-                    label: 'Wave',
-                    value: '/components/wave'
-                },{
-                    label: 'Collapse',
-                    value: '/components/collapse'
-                }]
-            }],
-            styles: {
-
-            }
+                children: menus
+            }]
         }
     }
     handleChange = (menu, value) => {
         history.push(value)
     }
     render() {
-        const styles = this.state.styles;
         return (
-            <Paper className="menu-paper">
+            <div className="menu-paper paper">
                 <div className="menu-head">
                     <img className='logo' src="http://materializecss.com/res/materialize.svg" alt=""/>
                     {/*<Paper className="search-paper">
@@ -80,7 +68,7 @@ export class MenusBox extends React.Component {
                     data={this.state.menus}
                     onChange={this.handleChange}
                 />
-            </Paper>
+            </div>
 
         );
     }

@@ -31,6 +31,7 @@ module.exports = {
         extensions: ['', '.js', '.jsx'],
         alias: {
             components: `${defaultSettings.srcPath}/components/`,
+            ['react-material']: `${defaultSettings.srcPath}/components/Components/`,
             actions: `${defaultSettings.srcPath}/actions/`,
             store: `${defaultSettings.srcPath}/store/`,
             images: `${defaultSettings.srcPath}/images/`,
