@@ -3,7 +3,7 @@
 * @Date:   2016-07-03 18:24:28
 * @Desc: this_is_desc
 * @Last Modified by:   pengzhen
-* @Last Modified time: 2016-07-03 21:16:03
+* @Last Modified time: 2016-07-04 14:52:40
 */
 
 'use strict';
@@ -29,7 +29,7 @@ context.keys().forEach((key,i)=>{
 
 let routes = [];
 let menuList = [];
-for(var prop in map){
+for(let prop in map){
     const dir = map[prop];
     const content = dir.map((path,i)=>{
         return context(path);

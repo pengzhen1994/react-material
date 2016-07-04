@@ -3,7 +3,7 @@
  * @Date:   2016-07-01 18:02:15
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-02 22:00:22
+ * @Last Modified time: 2016-07-04 18:06:19
  */
 
 'use strict';
@@ -35,6 +35,7 @@ function createWave(opt){
         var color = this.props.waveColor || DEFAULT_COLOR;
         var anim = this.props.waveAnim || DEFAULT_ANIM;
 
+
         var obj = document.createElement("div");
         var size = e.target.clientWidth;
         var { x, y } = getOffset(dom);
@@ -65,8 +66,8 @@ export default function wave(opt = {}) {
             var _this = this;
             var dom = render.call(this);
             let children = [
-                <div ref='wave' className='wave' onClick={createWave(opt).bind(_this)}></div>,
-                dom.props.children
+                dom.props.children,
+                <div ref='wave' className='wave' onClick={createWave(opt).bind(_this)}></div>
             ];
             dom = React.cloneElement(dom, {
                 children: children

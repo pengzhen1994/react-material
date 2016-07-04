@@ -2,7 +2,7 @@
 * @Author: pengzhen
 * @Date:   2016-07-01 17:51:28
 * @Last Modified by:   pengzhen
-* @Last Modified time: 2016-07-03 21:12:44
+* @Last Modified time: 2016-07-04 20:33:04
 */
 
 @theme_color: #ee6e73;
@@ -20,8 +20,10 @@
         position: absolute;
         right: 0;
         top: 0;
-        padding-top: 15px;
-        padding-left: 15px;
+        .right-content{
+            padding-top: 100px;
+            padding-left: 30px;
+        }
     }
     .top-nav {
         position: relative;
@@ -85,28 +87,3 @@
     }
 }
 
-
-.scroll-index{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    .index{
-        display: inline-block;
-        font-weight: 300;
-        color: #757575;
-        padding-left: 20px;
-        height: 1.5rem;
-        line-height: 1.5rem;
-        letter-spacing: .4;
-        cursor: pointer;
-        &:hover{
-            border-left: 1px solid #ee6e73;
-            margin-left: -1px;
-        }
-        &.active{
-            font-weight: 800;
-            border-left: 2px solid #ee6e73;
-            margin-left: -2px;
-        }
-    }
-}
