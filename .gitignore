@@ -31,3 +31,5 @@ node_modules
 bower_components/
 /.project
 /dist/
+
+assets/app.js.map
