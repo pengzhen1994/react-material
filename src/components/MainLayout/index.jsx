@@ -3,7 +3,7 @@
 * @Date:   2016-07-01 01:28:12
 * @Desc: this_is_desc
 * @Last Modified by:   pengzhen
-* @Last Modified time: 2016-07-05 22:11:23
+* @Last Modified time: 2016-07-05 22:18:47
 */
 
 'use strict';
@@ -19,7 +19,7 @@ export default class MainLayout extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            openMenu: true
+            openMenu: false
         }
     }
     toggleMenu=()=>{

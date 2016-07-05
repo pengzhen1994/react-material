@@ -2,7 +2,9 @@ import React from 'react';
 import {
     Router,
     Route,
-    IndexRoute
+    IndexRoute,
+    IndexRedirect,
+    Redirect
 } from 'react-router';
 import App from 'components/App';
 import Test from 'components/Test';
@@ -24,6 +26,7 @@ export default class Routes extends React.Component {
                 <Route path='/test' component={Test} />
                 <Route path='/todo' component={TodoList} />
                 <Route path='/' component={App}>
+                    <IndexRedirect to='/components/button' />
                     <Route path='blog' component={Blog} />
                     {exampleRoutes}
                 </Route>
