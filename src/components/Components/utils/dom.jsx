@@ -3,24 +3,22 @@
 * @Date:   2016-07-02 17:24:49
 * @Desc: this_is_desc
 * @Last Modified by:   pengzhen
-* @Last Modified time: 2016-07-04 20:29:52
+* @Last Modified time: 2016-07-05 19:05:55
 */
 
 'use strict';
 import Animation from './Animation';
-
 export function css(obj, attr, value) {
-    if (value) {
-        attr == "opacity" ? (obj.style["filter"] = "alpha(opacity=" + value + ")", obj.style[attr] = value / 100) : obj.style[attr] = value;
+    if (value !== undefined) {
+        attr == "opacity" ? (obj.style["filter"] = "alpha(opacity=" + value*100 + ")", obj.style[attr] = value) : obj.style[attr] = value;
     } else {
         if (typeof arguments[1] == "object") {
-            for (var i in attr) i == "opacity" ? (obj.style["filter"] = "alpha(opacity=" + attr[i] + ")", obj.style[i] = attr[i] / 100) : obj.style[i] = attr[i];
+            for (var i in attr) i == "opacity" ? (obj.style["filter"] = "alpha(opacity=" + attr[i]*100 + ")", obj.style[i] = attr[i]) : obj.style[i] = attr[i];
         } else {
-            return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr]
+            return obj.currentStyle ? obj.currentStyle[attr] : window.getComputedStyle(obj, null)[attr]
         }
     }
 };
-
 
 var addEvent = (function(window, undefined) {
     if (window.addEventListener) {
@@ -127,8 +125,19 @@ export function scrollTo(position, duration,call) {
             anim.onEnd = call;
             return anim;
         }catch(e){
-            console.error(e.name,e.message);
             dom.scrollTop = position;
         }
     }
+}
+
+export function createElement(str){
+    var el = null;
+    try{
+        el = document.createElement(str);
+    }catch(e){
+        el = document.createElement('div');
+        el.innerHTML = str;
+        el = el.childNodes[0];
+    }
+    return el;
 }

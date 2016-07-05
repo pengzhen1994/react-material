@@ -3,7 +3,7 @@
  * @Date:   2016-07-04 14:06:45
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-04 17:04:00
+ * @Last Modified time: 2016-07-05 13:47:17
  */
 
 'use strict';
@@ -13,6 +13,7 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import * as DomUtils from '../utils/dom';
 import throttle from '../utils/throttle';
+import bindArray from '../utils/bindArray';
 
 function getScroll(w, top) {
     var ret = w['page' + (top ? 'Y' : 'X') + 'Offset'];
@@ -34,7 +35,6 @@ function getOffset(element) {
     var clientLeft = element.clientLeft || body.clientLeft || 0;
     var scrollTop = getScroll(window, true);
     var scrollLeft = getScroll(window);
-
     return {
         top: rect.top + scrollTop - clientTop,
         left: rect.left + scrollLeft - clientLeft
@@ -57,9 +57,7 @@ export default class Affix extends React.Component {
             holderStyle: null,
             affixStyle: null
         };
-        ['handleChange','handleScroll'].forEach(method => {
-            this[method] = typeof this[method] === 'function' ? this[method].bind(this) : undefined
-        })
+        bindArray(this,['handleChange','handleScroll']);
     }
     handleChange() {
         return this.props.onChange(!!this.state.affixStyle);
@@ -73,6 +71,7 @@ export default class Affix extends React.Component {
         
         const thisNode = ReactDOM.findDOMNode(this);
         const fixedNode = ReactDOM.findDOMNode(this.refs.fixedNode);
+        window.fixedNode = fixedNode;
         let elementOffset = getOffset(thisNode);
         let elementSize = {
             width: fixedNode.offsetWidth,

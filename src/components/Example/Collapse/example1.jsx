@@ -3,12 +3,13 @@
  * @Date:   2016-07-03 16:46:08
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-03 18:19:30
+ * @Last Modified time: 2016-07-05 21:13:05
  */
 
 'use strict';
 import React from 'react';
 import Collapse from 'react-material/Collapse';
+import { RaisedButton } from 'react-material/Button';
 
 export default class Example extends React.Component {
 
@@ -27,7 +28,7 @@ export default class Example extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleClick}>button</button>
+                <p><RaisedButton onClick={this.handleClick}>button</RaisedButton></p>
                 <Collapse 
                     open={this.state.open}>
                     <div style={{ width:'100%',height: 100,background: '#ddd' }}></div>

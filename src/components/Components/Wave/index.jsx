@@ -3,7 +3,7 @@
  * @Date:   2016-07-01 18:02:15
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-04 18:06:19
+ * @Last Modified time: 2016-07-05 20:33:53
  */
 
 'use strict';
@@ -30,6 +30,7 @@ function createWave(opt){
     
     var duration = opt.duration || DEFAULT_DURATION;
     return function(e){
+        if(this.props.disabled){ return; }
         var dom = this.refs.wave;
         var position = this.props.wavePosition;
         var color = this.props.waveColor || DEFAULT_COLOR;

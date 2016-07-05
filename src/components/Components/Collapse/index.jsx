@@ -3,16 +3,17 @@
  * @Date:   2016-07-02 15:56:36
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-03 20:07:43
+ * @Last Modified time: 2016-07-05 14:56:04
  */
 
 'use strict';
 import './index.less';
 import React from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import linkFunctions from '../utils/linkFunctions';
+import bindArray from '../utils/bindArray';
 import { css } from '../utils/dom';
-import Transition from 'react-overlays/lib/Transition';
+import Transition from '../Transition';
 
 
 const MARGINS = {
@@ -37,15 +38,13 @@ export default class Collapse extends React.Component {
     
     constructor(props) {
         super(props);
-        [
+        bindArray(this,[
             'handleEnter',
             'handleEntering',
             'handleEntered',
             'handleExit',
             'handleExiting'
-        ].forEach(method => {
-            this[method] = typeof this[method] === 'function' ? this[method].bind(this) : undefined
-        })
+        ]);
     }
 
     /* -- Expanding -- */
@@ -97,7 +96,7 @@ export default class Collapse extends React.Component {
             <Transition
                 ref="transition"
                 in={this.props.open}
-                className={classNames(this.props.className, { width: this.props.type === 'width' })}
+                className={classnames(this.props.className, { width: this.props.type === 'width' })}
                 timeout={this.props.duration}
                 exitedClassName="collapse"
                 exitingClassName="collapsing"
