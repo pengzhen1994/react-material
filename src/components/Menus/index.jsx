@@ -3,7 +3,7 @@
  * @Date:   2016-06-30 23:31:47
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-03 21:14:05
+ * @Last Modified time: 2016-07-06 17:34:11
  */
 
 'use strict';
@@ -32,10 +32,11 @@ export class MenusBox extends React.Component {
         super(props);
         this.state = {
             menus: [
+            {
+                label: 'Getting Started',
+                value: '/'
+            },
             // {
-            //     label: '主页',
-            //     value: '/'
-            // }, {
             //     label: '博客',
             //     value: '/blog'
             // }, 

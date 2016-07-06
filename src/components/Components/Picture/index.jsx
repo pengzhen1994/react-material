@@ -3,7 +3,7 @@
  * @Date:   2016-07-05 18:10:34
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-05 19:51:00
+ * @Last Modified time: 2016-07-06 14:15:45
  */
 
 'use strict';
@@ -81,7 +81,11 @@ export default class Picture extends React.Component {
         }
     }
     render() {
-        const img = <img ref='dom' src={this.props.src}/>;
+        let childProps = {...this.props};
+        Object.keys(Picture.propTypes).forEach(key=>{ delete childProps[key] });
+
+
+        const img = <img {...childProps} ref='dom' src={this.props.src}/>;
         const status = this.state.status;
 
         if(status === SUCCESS){

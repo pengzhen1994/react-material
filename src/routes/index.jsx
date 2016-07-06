@@ -10,6 +10,7 @@ import App from 'components/App';
 import Test from 'components/Test';
 // import NotFound from '../components/NotFound';
 import TodoList from 'components/Todos/TodoList';
+import Home from 'components/Home';
 import Blog from 'components/Blog';
 
 import exampleRoutes from './example';
@@ -26,7 +27,7 @@ export default class Routes extends React.Component {
                 <Route path='/test' component={Test} />
                 <Route path='/todo' component={TodoList} />
                 <Route path='/' component={App}>
-                    <IndexRedirect to='/components/button' />
+                    <IndexRoute component={Home} />
                     <Route path='blog' component={Blog} />
                     {exampleRoutes}
                 </Route>

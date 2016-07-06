@@ -3,7 +3,7 @@
  * @Date:   2016-07-01 17:51:18
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-04 19:25:09
+ * @Last Modified time: 2016-07-05 22:56:24
  */
 
 'use strict';
@@ -40,9 +40,12 @@ export default class Example extends React.Component {
     render() {
         let links = [];
         let content = this.props.content;
-        if(content){
-            content = content.map((obj,i)=>{
-                const { title,code } = obj;
+        if (content) {
+            content = content.map((obj, i) => {
+                const {
+                    title,
+                    code
+                } = obj;
                 const Component = obj.default;
                 const ref = 'example_' + i;
                 links.push({
@@ -63,6 +66,7 @@ export default class Example extends React.Component {
         }
         return (
             <div className="components-example">
+                
                 <TopNav 
                     title={this.props.title} 
                     waveAnim={'exampleAnim'}
@@ -75,6 +79,7 @@ export default class Example extends React.Component {
                     </div>
                     <div className="right-col">
                         <Affix className='right-content'>
+                            <GitBox></GitBox>
                             <IndexLink parent={this} data={links}/>
                         </Affix>
                     </div>
@@ -83,6 +88,34 @@ export default class Example extends React.Component {
         );
     }
 }
+
+class GitBox extends React.Component {
+    static propTypes = {
+        name: React.PropTypes.string,
+    };
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="git-box">
+                <iframe 
+                    src="https://ghbtns.com/github-btn.html?user=pengzhen1994&repo=react-material&type=watch&count=true&size=large&v=2" 
+                    frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
+                <iframe 
+                    src="https://ghbtns.com/github-btn.html?user=pengzhen1994&repo=react-material&type=star&count=true&size=large" 
+                    frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
+
+                <iframe 
+                    src="https://ghbtns.com/github-btn.html?user=pengzhen1994&repo=react-material&type=fork&count=true&size=large" 
+                    frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
+            </div>
+        );
+    }
+}
+
 @wave()
 export class TopNav extends React.Component {
     static propTypes = {
@@ -98,6 +131,7 @@ export class TopNav extends React.Component {
             <div className="top-nav" onClick={this.props.onClick}>
                 <div className="container">
                     <h1 className="title">{this.props.title}</h1>
+                    
                 </div>
             </div>
         );
@@ -140,9 +174,8 @@ export class ExampleCode extends React.Component {
                     <div className="code-example">
                         {this.props.children}
                     </div>
-                </div>
+                </div> 
             </div>
         );
     }
 }
-

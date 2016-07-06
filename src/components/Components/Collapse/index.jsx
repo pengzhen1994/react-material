@@ -3,7 +3,7 @@
  * @Date:   2016-07-02 15:56:36
  * @Desc: this_is_desc
  * @Last Modified by:   pengzhen
- * @Last Modified time: 2016-07-05 14:56:04
+ * @Last Modified time: 2016-07-06 15:46:36
  */
 
 'use strict';
@@ -98,10 +98,10 @@ export default class Collapse extends React.Component {
                 in={this.props.open}
                 className={classnames(this.props.className, { width: this.props.type === 'width' })}
                 timeout={this.props.duration}
-                exitedClassName="collapse"
-                exitingClassName="collapsing"
-                enteredClassName="collapse in"
-                enteringClassName="collapsing"
+                exitedClassName="will-anim collapse"
+                exitingClassName="will-anim collapsing"
+                enteredClassName="will-anim collapse in"
+                enteringClassName="will-anim collapsing"
                 onEnter={enter}
                 onEntering={entering}
                 onEntered={entered}
